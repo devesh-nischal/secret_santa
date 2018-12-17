@@ -85,18 +85,19 @@ main(int argc, char const *argv[])
         }
 
         //check for disconnections
-        Person* iterator = NULL;
+        Person* iterator = names[0];
         for (int i = 0; i < num; i++) {
-            if (iterator == names[0] && i != num-1) {
+            if (iterator->got == names[0] && i != num-1) {
                 disconnectedCheck = false;
-		for(int j = 0; j < num; j++) {
-		    names[j]->gotten = 0;
-		}
+                for(int j = 0; j < num; j++) {
+                    names[j]->gotten = 0;
+                    names[j]->got = NULL;
+                }
                 break;
             }
             else {
                 disconnectedCheck = true;
-                iterator = names[i]->got;
+                iterator = iterator->got;
             }
         }
     }
